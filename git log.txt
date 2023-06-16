@@ -1,0 +1,26 @@
+Author: unknown <fahadhumayun99@gmail.com>
+Date:   Sat Jun 17 02:10:22 2023 +0600
+
+    a2q2.py is modified with black bos and white box test
+
+commit be3677d616b3ffda2984592ccc3c7b8ae276591c
+Author: unknown <fahadhumayun99@gmail.com>
+PS C:\Users\61450\Desktop\ass2> git --no-pager log
+commit be267d9114259c096fcf20b73b8830f24f44b391 (HEAD -> master, origin/master)
+Author: unknown <fahadhumayun99@gmail.com>                                     
+Date:   Sat Jun 17 02:10:22 2023 +0600                                         
+                                                                               
+    a2q2.py is modified with black bos and white box test                      
+                                                                               
+commit be3677d616b3ffda2984592ccc3c7b8ae276591c                                
+Author: unknown <fahadhumayun99@gmail.com>                                     
+Date:   Sat Jun 17 01:41:14 2023 +0600                                         
+
+    boxing.py file is renamed to a2q2.py
+
+commit f2e3ca84f2949aebbf9a081919855152863e3116
+Author: unknown <fahadhumayun99@gmail.com>
+Date:   Sat Jun 17 01:35:10 2023 +0600
+
+    Initial files are added to repo
+PS C:\Users\61450\Desktop\ass2>
