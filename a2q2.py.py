@@ -115,7 +115,237 @@ def sort_students_into_grades(student_list: list) -> dict:
 
 
 # TODO: Create tests for functions above
+#test function for gcd
+def test_gcd():
+    # Test case 1: Valid inputs
+    assert gcd(12, 18) == 6, "Test case 1 failed"
+
+    # Test case 2: Valid inputs, one value is 0
+    assert gcd(0, 25) == 25, "Test case 2 failed"
+
+    # Test case 3: Invalid input, val1 > 1000
+    assert gcd(1500, 50) == -1, "Test case 3 failed"
+
+    # Test case 4: Invalid input, val2 > 1000
+    assert gcd(50, 1500) == -1, "Test case 4 failed"
+
+    # Test case 5: Invalid input, val1 and val2 > 1000
+    assert gcd(1500, 1500) == -1, "Test case 5 failed"
+
+    # Test case 6: Valid inputs, both values are prime numbers
+    assert gcd(17, 23) == 1, "Test case 6 failed"
+
+    print("All test cases passed for gcd()")
+
+#after completing this commit
+
+# test function for test_replace function
+def test_replace():
+    # Test case 1: Valid inputs, target string exists in input string
+    assert replace("Hello, World!", "o", "x") == "Hellx, Wxrld!", "Test case 1 failed"
+
+    # Test case 2: Valid inputs, target string does not exist in input string
+    assert replace("Hello, World!", "z", "x") == "Hello, World!", "Test case 2 failed"
+
+    # Test case 3: Empty target string, input string remains unchanged
+    assert replace("Hello, World!", "", "x") == "Hello, World!", "Test case 3 failed"
+
+    # Test case 4: Valid inputs, multiple occurrences of target string
+    assert replace("Hello, Hello, Hello!", "Hello", "Hi") == "Hi, Hi, Hi!", "Test case 4 failed"
+
+    print("All test cases passed for replace()")
+
+    ###after completing this commit
+
+    #test function for test_grade_letter
+
+
+def test_grade_letter():
+    # Test case 1: Valid input, score within range
+    assert grade_letter(85) == "B", "Test case 1 failed"
+
+    # Test case 2: Valid input, score at the lower boundary
+    assert grade_letter(0) == "F", "Test case 2 failed"
+
+    # Test case 3: Valid input, score at the upper boundary
+    assert grade_letter(100) == "A", "Test case 3 failed"
+
+    # Test case 4: Invalid input, score below range
+    assert grade_letter(-10) == "Invalid", "Test case 4 failed"
+
+    # Test case 5: Invalid input, score above range
+    assert grade_letter(110) == "Invalid", "Test case 5 failed"
+
+    print("All test cases passed for grade_letter()")
+
+# test function for sor test_sort_students_into_grades
+def test_sort_students_into_grades():
+    # Test case 1: Valid input, multiple students with different grades
+    student_list = [
+        {"name": "Alice", "grade": "A"},
+        {"name": "Bob", "grade": "B"},
+        {"name": "Charlie", "grade": "C"},
+        {"name": "Dave", "grade": "D"},
+        {"name": "Eve", "grade": "F"},
+        {"name": "Frank", "grade": "A"},
+    ]
+    expected_result = {
+        "A": ["Alice", "Frank"],
+        "B": ["Bob"],
+        "C": ["Charlie"],
+        "D": ["Dave"],
+        "F": ["Eve"],
+        "Invalid": []
+    }
+    assert sort_students_into_grades(student_list) == expected_result, "Test case 1 failed"
+
+    # Test case 2: Valid input, empty student list
+    assert sort_students_into_grades([]) == {
+        "A": [],
+        "B": [],
+        "C": [],
+        "D": [],
+        "F": [],
+        "Invalid": []
+    }, "Test case 2 failed"
+
+    # after writing this function commit
+
+
+    print("All test cases passed for sort_students_into_grades()")
 # TODO Create test driver for whitebox tested functions
+def test_driver_whitebox():
+    # Test gcd()
+    print("Testing gcd()...")
+    print("gcd(12, 18) =", gcd(12, 18))  # Expected output: 6
+    print("gcd(0, 25) =", gcd(0, 25))  # Expected output: 25
+    print("gcd(1500, 50) =", gcd(1500, 50))  # Expected output: -1
+    print("gcd(50, 1500) =", gcd(50, 1500))  # Expected output: -1
+    print("gcd(1500, 1500) =", gcd(1500, 1500))  # Expected output: -1
+    print("gcd(17, 23) =", gcd(17, 23))  # Expected output: 1
+    print("gcd(0, 0) =", gcd(0, 0))  # Expected output: 0
+    print()
+
+    # Test replace()
+    print("Testing replace()...")
+    print('replace("Hello, World!", "o", "x") =', replace("Hello, World!", "o", "x"))  # Expected output: "Hellx, Wxrld!"
+    print('replace("Hello, World!", "z", "x") =', replace("Hello, World!", "z", "x"))  # Expected output: "Hello, World!"
+    print('replace("Hello, World!", "", "x") =', replace("Hello, World!", "", "x"))  # Expected output: "Hello, World!"
+    print('replace("Hello, Hello, Hello!", "Hello", "Hi") =', replace("Hello, Hello, Hello!", "Hello", "Hi"))  # Expected output: "Hi, Hi, Hi!"
+    print()
+
+    # Test grade_letter()
+    print("Testing grade_letter()...")
+    print("grade_letter(85) =", grade_letter(85))  # Expected output: "B"
+    print("grade_letter(0) =", grade_letter(0))  # Expected output: "F"
+    print("grade_letter(100) =", grade_letter(100))  # Expected output: "A"
+    print("grade_letter(-10) =", grade_letter(-10))  # Expected output: "Invalid"
+    print("grade_letter(110) =", grade_letter(110))  # Expected output: "Invalid"
+    print()
+
+# Call the test driver
+print("--------------Whitebox Test cases----------------------\n")
+test_driver_whitebox()
+
 # TODO: Create test driver for blackbox tested functions
+def test_driver_blackbox():
+    # Test gcd()
+    print("Testing gcd()...")
+    print("gcd(12, 18) =", gcd(12, 18))  # Expected output: 6
+    print("gcd(0, 25) =", gcd(0, 25))  # Expected output: 25
+    print("gcd(17, 23) =", gcd(17, 23))  # Expected output: 1
+    print()
+
+    # Test replace()
+    print("Testing replace()...")
+    print('replace("Hello, World!", "o", "x") =', replace("Hello, World!", "o", "x"))  # Expected output: "Hellx, Wxrld!"
+    print('replace("Hello, Hello, Hello!", "Hello", "Hi") =', replace("Hello, Hello, Hello!", "Hello", "Hi"))  # Expected output: "Hi, Hi, Hi!"
+    print()
+
+    # Test grade_letter()
+    print("Testing grade_letter()...")
+    print("grade_letter(85) =", grade_letter(85))  # Expected output: "B"
+    print("grade_letter(0) =", grade_letter(0))  # Expected output: "F"
+    print("grade_letter(100) =", grade_letter(100))  # Expected output: "A"
+    print()
+
+    # Test sort_students_into_grades()
+    print("Testing sort_students_into_grades()...")
+    student_list = [
+        {"name": "Alice", "grade": "A"},
+        {"name": "Bob", "grade": "B"},
+        {"name": "Charlie", "grade": "C"},
+        {"name": "Dave", "grade": "D"},
+        {"name": "Eve", "grade": "F"},
+        {"name": "Frank", "grade": "A"},
+    ]
+    print("sort_students_into_grades(student_list) =", sort_students_into_grades(student_list))
+    # Expected output: {
+    #     "A": ["Alice", "Frank"],
+    #     "B": ["Bob"],
+    #     "C": ["Charlie"],
+    #     "D": ["Dave"],
+    #     "F": ["Eve"],
+    #     "Invalid": []
+    # }
+
+    print()
+
+# Call the test driver
+print("--------------Blackbox Test cases----------------------\n")
+test_driver_blackbox()
 # TODO: Create test driver to test all functions
+def test_driverBlackWhite():
+    # Test gcd()
+    print("Testing gcd()...")
+    print("gcd(12, 18) =", gcd(12, 18))  # Expected output: 6
+    print("gcd(0, 25) =", gcd(0, 25))  # Expected output: 25
+    print("gcd(1500, 50) =", gcd(1500, 50))  # Expected output: -1
+    print("gcd(50, 1500) =", gcd(50, 1500))  # Expected output: -1
+    print("gcd(1500, 1500) =", gcd(1500, 1500))  # Expected output: -1
+    print("gcd(17, 23) =", gcd(17, 23))  # Expected output: 1
+    print("gcd(0, 0) =", gcd(0, 0))  # Expected output: 0
+    print()
+# Test replace()
+    print("Testing replace()...")
+    print('replace("Hello, World!", "o", "x") =', replace("Hello, World!", "o", "x"))  # Expected output: "Hellx, Wxrld!"
+    print('replace("Hello, World!", "z", "x") =', replace("Hello, World!", "z", "x"))  # Expected output: "Hello, World!"
+    print('replace("Hello, World!", "", "x") =', replace("Hello, World!", "", "x"))  # Expected output: "Hello, World!"
+    print('replace("Hello, Hello, Hello!", "Hello", "Hi") =', replace("Hello, Hello, Hello!", "Hello", "Hi"))  # Expected output: "Hi, Hi, Hi!"
+    print()
+
+    # Test grade_letter()
+    print("Testing grade_letter()...")
+    print("grade_letter(85) =", grade_letter(85))  # Expected output: "B"
+    print("grade_letter(0) =", grade_letter(0))  # Expected output: "F"
+    print("grade_letter(100) =", grade_letter(100))  # Expected output: "A"
+    print("grade_letter(-10) =", grade_letter(-10))  # Expected output: "Invalid"
+    print("grade_letter(110) =", grade_letter(110))  # Expected output: "Invalid"
+    print()
+
+    # Test sort_students_into_grades()
+    print("Testing sort_students_into_grades()...")
+    student_list = [
+        {"name": "Alice", "grade": "A"},
+        {"name": "Bob", "grade": "B"},
+        {"name": "Charlie", "grade": "C"},
+        {"name": "Dave", "grade": "D"},
+        {"name": "Eve", "grade": "F"},
+        {"name": "Frank", "grade": "A"},
+    ]
+    print("sort_students_into_grades(student_list) =", sort_students_into_grades(student_list))
+    # Expected output: {
+    #     "A": ["Alice", "Frank"],
+    #     "B": ["Bob"],
+    #     "C": ["Charlie"],
+    #     "D": ["Dave"],
+    #     "F": ["Eve"],
+    #     "Invalid": []
+    # }
+
+    print()
+# Call the test driver
+print("---------------------whitebox , blackbox all the test cases are printed below----------------------------------")
+test_driverBlackWhite()
+
 
