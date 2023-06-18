@@ -38,6 +38,8 @@ def get_patient_people(community: list):
     return [person for person in community if person["foes"] == []]
     #return []
 
+
+
 def leave_community(community: list, name:str) -> None:
     """
     Purpose: Go through the list of dictionaries passed in removing name from lists for keys "friends"
@@ -62,6 +64,9 @@ def leave_community(community: list, name:str) -> None:
         if name in person["foes"]:
             person["foes"].remove(name)
     return
+
+
+
 
 def are_community_besties(community: list, name1: str, name2: str) -> bool:
     """
