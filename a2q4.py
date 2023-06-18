@@ -21,8 +21,6 @@
 # NSID
 # Student Number
 
-# TODO: TEST DRIVEN DEVELOPMENT
-
 def get_patient_people(community: list):
     """
     Purpose: Get a list of all dictionaries where value for "foes" is an empty list.
@@ -36,7 +34,9 @@ def get_patient_people(community: list):
     Return:
         list of dictionaries of those with no foes.
     """
-    return []
+    #CHANGE
+    return [person for person in community if person["foes"] == []]
+    #return []
 
 def leave_community(community: list, name:str) -> None:
     """
@@ -53,6 +53,14 @@ def leave_community(community: list, name:str) -> None:
     Return:
         None
     """
+
+    ### CHANGe
+    community[:] = [person for person in community if person["name"] != name]
+    for person in community:
+        if name in person["friends"]:
+            person["friends"].remove(name)
+        if name in person["foes"]:
+            person["foes"].remove(name)
     return
 
 def are_community_besties(community: list, name1: str, name2: str) -> bool:
@@ -73,7 +81,19 @@ def are_community_besties(community: list, name1: str, name2: str) -> bool:
         list associated with the key "friends".
         Returns True if on both "friends" and "foes" list simultaneously
     """
+
+    #####CHANGE
+
+    if name1 == name2:
+        return False
+
+    for person in community:
+        if person["name"] == name1 and name2 in person["friends"]:
+            return True
+        if person["name"] == name2 and name1 in person["friends"]:
+            return True
     return False
+    #return False
 
 def get_all_community_besties(community: list, name: str) -> list:
     """
@@ -91,7 +111,16 @@ def get_all_community_besties(community: list, name: str) -> list:
         list associated with the key "friends"
         Still added to list if names are simultaneously in lists associated with "friends" and "foes"
     """
-    return []
+    #CHANGE
+    friends_list = []
+    for person in community:
+        if person["name"] == name:
+            for friend in person["friends"]:
+                if are_community_besties(community, name, friend):
+                    friends_list.append(friend)
+            break
+    return friends_list
+    #return []
 
 
 ### TESTS
@@ -264,9 +293,9 @@ def testing():
                      "expect": False,
                      "output": are_community_besties(case5,"Elmer", "Daffy"),
                      "message": "Neither are within the community"},
-                      {"input": (case5, "Tweety", "Lola"),
+                      {"input": (case5, "Tweety", "Granny"),
                        "expect": True,
-                       "output": are_community_besties(case5,"Tweety", "Lola"),
+                       "output": are_community_besties(case5, "Tweety", "Granny"),
                        "message": "Granny and Tweety are in each other's friends lists"},
                       {"input": (case6, "Bugs", ""),
                        "expect": True,
@@ -353,6 +382,32 @@ def testing():
     print("TESTING COMPLETE", total_tests, "PASSED!")
 
 
+
+###########################################
+def no_foes(community):
+    """Return a list of person adts that have no foes."""
+    return [person for person in community if not person['foes']]
+
+def remove_person(community, name):
+    """Remove a person adt from the community and update other people's lists."""
+    for person in community:
+        if name in person['friends']:
+            person['friends'].remove(name)
+        if name in person['foes']:
+            person['foes'].remove(name)
+    community[:] = [person for person in community if person['name'] != name]
+
+def same_community_friends(community, person1, person2):
+    """Check if two people are from the same community and are friends."""
+    for person in community:
+        if person['name'] == person1 and person2 in person['friends']:
+            return True
+    return False
+
+def true_friends(community, person):
+    """Return a list of person adts that someone is truly friends with."""
+    return [p for p in community if person in p['friends'] and person not in p['foes']]
+
+
 if __name__=="__main__":
     testing()
-
