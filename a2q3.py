@@ -24,6 +24,9 @@
 # Recall another name for a list of dictionaries is a record.
 
 # TODO: PART A - Find and Fix Errors
+
+# CHANGE Importing a specific function from a module
+import copy
 def copy_list_of_lists(data: list) -> list:
     """
     Purpose: Deep copy a list passed in
@@ -36,9 +39,15 @@ def copy_list_of_lists(data: list) -> list:
         list - a new list with new internal lists created by copying the
      information from the list passed in.
     """
-    new_list = data
+   #new_list = data {commenting out the original code}
+    new_list = copy.deepcopy(data)
     return new_list
 
+    # explain : the function is not performing deep copy of the list.instead it is creating a reference to the same list so we used the copy module and utilize the deepcopy() function.
+
+
+#importing a specific function from the module.
+import copy
 def copy_dict_of_dicts(data: dict) -> dict:
     """
     Purpose: Deep copy the dictionary passed in.
@@ -52,12 +61,12 @@ def copy_dict_of_dicts(data: dict) -> dict:
         dict - a new dictionary with new internal dictionaries created by copying the
      information from the list passed in.
     """
-    new_dict = {}
-    for element in data:
-        if data[element] is data:
-            new_dict[element] = data[element]
+    new_dict = copy.deepcopy(data)
+    #for element in data: {commenting out the original code }
+    #    if data[element] is data:
+    #        new_dict[element] = data[element]
     return new_dict
-
+# explain : The loop only checks if the value is the dictionary itself (data[element] is data) which is not deep copying. so again we used copy module and deep copy() function.
 
 # TODO PART B - Implement the following functions based on the description
 
