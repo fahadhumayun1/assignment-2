@@ -69,7 +69,7 @@ def copy_dict_of_dicts(data: dict) -> dict:
 # explain : The loop only checks if the value is the dictionary itself (data[element] is data) which is not deep copying. so again we used copy module and deep copy() function.
 
 # TODO PART B - Implement the following functions based on the description
-
+import copy
 def deep_copy_list_of_dicts(data:list) -> list:
     """
     Purpose: Deep copy the list passed in.
@@ -80,9 +80,13 @@ def deep_copy_list_of_dicts(data:list) -> list:
     Return:
         list - deep copy of the list it's values are returned.
     """
-    return []
+    # return [] {commenting out the original code}
+    return copy.deepcopy(data)
+    #explain : It was returning an empty list and for implement the function we need to use 'copy.deepcopy()' function.
+
 
 def remove_from_2DList(data:list, val) -> list:
+
     """
     Purpose: Remove all instances of val from data
     Pre-condition:
@@ -93,8 +97,10 @@ def remove_from_2DList(data:list, val) -> list:
     Return:
         list - list with changes applied.
     """
-    return []
+    #return [] {commenting out the original code}
+    return [[elem for elem in sublist if elem != val] for sublist in data]
 
+    #Explain: To correctly implement the removal functionality we can use list comprehension to iterate data.
 
 def filter_from_2DList(data:list, val) -> list:
     """
@@ -107,7 +113,11 @@ def filter_from_2DList(data:list, val) -> list:
     Return:
         list - a new list with no instances of the value passed in.
     """
-    return []
+    #return []
+    return [[elem for elem in sublist if elem != val] for sublist in data]
+
+    #Explain : The code was returning with empty list. we need to use iterate through the data list and filter out the instances of 'val'
+
 
 ### TESTING ###
 
