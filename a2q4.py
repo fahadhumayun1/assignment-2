@@ -100,6 +100,7 @@ def are_community_besties(community: list, name1: str, name2: str) -> bool:
     return False
     #return False
 
+
 def get_all_community_besties(community: list, name: str) -> list:
     """
     Purpose: Determine all friends of name passed in where they are on each others "friends list".
